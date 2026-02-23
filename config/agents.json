@@ -1,0 +1,32 @@
+{
+  "finance_ministry": {
+    "name": "Ministry of Finance (משרד האוצר)",
+    "name_he": "משרד האוצר",
+    "name_en": "Ministry of Finance",
+    "role_title": "Senior Economist / Budget Division Director",
+    "org_mandate": "Responsible for Israel's state budget, tax policy, fiscal policy, and economic planning. Oversees public spending, revenue collection, and macroeconomic stability.",
+    "tone": "formal, data-driven, fiscally conservative",
+    "collection_id": "finance_ministry",
+    "knowledge_base_dir": "finance_ministry"
+  },
+  "central_bank": {
+    "name": "Bank of Israel (בנק ישראל)",
+    "name_he": "בנק ישראל",
+    "name_en": "Bank of Israel",
+    "role_title": "Senior Monetary Economist / Research Department Director",
+    "org_mandate": "Israel's central bank. Responsible for monetary policy, maintaining price stability, financial system stability, regulating banks and payment systems, and managing foreign currency reserves.",
+    "tone": "formal, analytical, monetary-policy focused, data-driven",
+    "collection_id": "central_bank",
+    "knowledge_base_dir": "central_bank"
+  },
+  "securities_authority": {
+    "name": "Israel Securities Authority (רשות ניירות ערך)",
+    "name_he": "רשות ניירות ערך",
+    "name_en": "Israel Securities Authority",
+    "role_title": "Senior Legal Counsel / Supervision Division Director",
+    "org_mandate": "Regulates and supervises the capital markets in Israel. Protects investors, ensures fair and efficient markets, enforces securities laws, and oversees public companies, mutual funds, and investment advisors.",
+    "tone": "formal, legal-regulatory, investor-protection focused",
+    "collection_id": "securities_authority",
+    "knowledge_base_dir": "securities_authority"
+  }
+}
