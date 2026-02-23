@@ -66,6 +66,11 @@ CATEGORIES = {
         "url": "https://www.boi.org.il/en/research-and-publications/working-papers/",
         "subfolder": "research_papers",
     },
+    "banking_supervision": {
+        "name": "Banking System Annual & Semi-Annual Reports (סקירת המערכת הבנקאית)",
+        "url": "https://www.boi.org.il/publications/regularpublications/banking-system/",
+        "subfolder": "banking_supervision",
+    },
 }
 
 
