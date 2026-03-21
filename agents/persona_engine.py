@@ -5,7 +5,7 @@ grounded exclusively in retrieved context.
 """
 from __future__ import annotations
 import os
-from typing import List, Dict, Any, Generator
+from typing import List, Dict, Generator
 
 import anthropic
 

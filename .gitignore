@@ -7,3 +7,27 @@ __pycache__/
 venv/
 *.egg-info/
 .DS_Store
+
+# Raw downloaded data — large, regeneratable
+knesset_cache/
+knowledge_base/
+
+# Build artifacts & large binaries
+GovPersona-Portable/
+GovPersona-Portable.zip
+GovPersona-CLI-ZIP.zip
+build_pyinstaller/
+python-3.12.0-embed-amd64.zip
+sample_protocol.doc
+get-pip.py
+make_zip.ps1
+
+# Dependency packages (binary wheels / R packages)
+GovPersona-CLI/r_packages/
+GovPersona-CLI/whl_packages/
+
+# KB JSON over 50 MB GitHub limit
+GovPersona-CLI/kb_central_bank.json
+
+# Large binary in Shiny
+GovPersona-Shiny/cloudflared.exe

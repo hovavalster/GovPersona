@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+import sys
+import io
+if sys.stdout.encoding and sys.stdout.encoding.upper() not in ("UTF-8", "UTF8"):
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding="utf-8", errors="replace")
+
 """
 CLI batch ingestion script.
 
@@ -15,7 +22,7 @@ import argparse
 import os
 import sys
 
-from agents.registry import list_agents, get_agent
+from agents.registry import list_agents
 from core.document_loader import ingest_file
 from core.vector_store import get_vsm
 
@@ -64,8 +71,9 @@ def main():
             print(f"ERROR: Knowledge base directory not found: {kb_dir}")
             sys.exit(1)
         files = [
-            os.path.join(kb_dir, f)
-            for f in os.listdir(kb_dir)
+            os.path.join(root, f)
+            for root, _, filenames in os.walk(kb_dir)
+            for f in filenames
             if os.path.splitext(f)[1].lower() in _SUPPORTED
         ]
 

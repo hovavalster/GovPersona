@@ -10,7 +10,8 @@ Usage:
   python download_boi.py --list                   # list available categories
   python download_boi.py --max-per-category 5     # limit downloads per category
 """
-import sys, io
+import sys
+import io
 # Force UTF-8 output on Windows so status lines print correctly
 if sys.stdout.encoding and sys.stdout.encoding.upper() not in ("UTF-8", "UTF8"):
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
@@ -21,7 +22,6 @@ import os
 import re
 import sys
 import time
-import json
 
 import requests
 from bs4 import BeautifulSoup
@@ -179,7 +179,7 @@ def get_all_publication_links(
     max_pages: int = 10,
 ) -> list[str]:
     """Load listing page + paginate via AJAX to get all publication detail links."""
-    print(f"  Fetching listing page...")
+    print("  Fetching listing page...")
     soup = fetch_html(session, listing_url)
     if not soup:
         return []
@@ -359,7 +359,7 @@ def main():
         else CATEGORIES
     )
 
-    print(f"\nBank of Israel Document Downloader")
+    print("\nBank of Israel Document Downloader")
     print(f"Output: {OUTPUT_ROOT}")
     print(f"Categories: {', '.join(cats_to_run.keys())}")
 
@@ -378,15 +378,15 @@ def main():
             total_stats[k] += stats[k]
 
     print(f"\n{'='*60}")
-    print(f"Done!")
+    print("Done!")
     print(f"   Downloaded : {total_stats['downloaded']} new file(s)")
     print(f"   Skipped    : {total_stats['skipped']} (already had them)")
     print(f"   Errors     : {total_stats['errors']}")
     print(f"\nFiles saved to: {OUTPUT_ROOT}")
     print(
-        f"\nNext step: go to GovPersona → Train Agent tab → select Bank of Israel → "
-        f"upload the files, OR run:\n"
-        f"  python ingest.py --org central_bank"
+        "\nNext step: go to GovPersona → Train Agent tab → select Bank of Israel → "
+        "upload the files, OR run:\n"
+        "  python ingest.py --org central_bank"
     )
 
 

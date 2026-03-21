@@ -49,6 +49,20 @@ class VectorStoreManager:
         # Build MD5 IDs
         ids = [hashlib.md5(chunk.encode("utf-8")).hexdigest() for chunk in chunks]
 
+        # Deduplicate within the batch first (identical content → same MD5)
+        seen: set[str] = set()
+        ids, chunks, metadatas = zip(
+            *[
+                (doc_id, chunk, meta)
+                for doc_id, chunk, meta in zip(ids, chunks, metadatas)
+                if not (doc_id in seen or seen.add(doc_id))  # type: ignore[func-returns-value]
+            ]
+        ) if chunks else ([], [], [])
+        ids, chunks, metadatas = list(ids), list(chunks), list(metadatas)
+
+        if not ids:
+            return 0, len(chunks)
+
         # Check which IDs already exist
         existing = collection.get(ids=ids, include=[])["ids"]
         existing_set = set(existing)

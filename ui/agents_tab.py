@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import streamlit as st
 
-from agents.registry import list_agents, get_agent, add_agent, delete_agent
+from agents.registry import list_agents, get_agent, add_agent
 from core.vector_store import get_vsm
 
 
@@ -42,7 +42,7 @@ def render_agents_tab():
 
                 with danger_col1:
                     if st.button(
-                        f"🗑️ Clear Collection",
+                        "🗑️ Clear Collection",
                         key=f"clear_{org_id}",
                         help="Deletes all indexed chunks for this agency. Cannot be undone.",
                     ):
