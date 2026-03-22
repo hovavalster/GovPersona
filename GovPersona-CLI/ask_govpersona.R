@@ -88,14 +88,20 @@ parse_args <- function() {
     cat("\n  GovPersona CLI (R version)\n")
     cat("  ===========================\n\n")
     cat("  Available agents:\n")
-    cat("    1. finance_ministry      Ministry of Finance\n")
-    cat("    2. central_bank          Bank of Israel\n")
-    cat("    3. securities_authority  Israel Securities Authority\n\n")
-    choice <- readline("  Enter agent name or number (1/2/3): ")
+    cat("    1. finance_ministry           Ministry of Finance\n")
+    cat("    2. central_bank               Bank of Israel\n")
+    cat("    3. securities_authority       Israel Securities Authority\n")
+    cat("    4. capital_markets_authority  Capital Markets, Insurance & Savings\n")
+    cat("    5. ministry_of_justice        Ministry of Justice\n")
+    cat("    6. tax_authority              Israel Tax Authority\n\n")
+    choice <- readline("  Enter agent name or number (1-6): ")
     org <- switch(trimws(choice),
       "1" = "finance_ministry",
       "2" = "central_bank",
       "3" = "securities_authority",
+      "4" = "capital_markets_authority",
+      "5" = "ministry_of_justice",
+      "6" = "tax_authority",
       trimws(choice)
     )
   }
