@@ -203,15 +203,46 @@ call_claude <- function(api_key, system_prompt, messages) {
     system      = system_prompt,
     messages    = messages
   )
-  response <- httr::POST(
-    url    = "https://api.anthropic.com/v1/messages",
-    config = httr::config(ssl_verifypeer = FALSE),
-    httr::add_headers(
-      "x-api-key"         = api_key,
-      "anthropic-version" = "2023-06-01",
-      "content-type"      = "application/json"),
-    body   = jsonlite::toJSON(body, auto_unbox = TRUE),
-    encode = "raw")
+
+  # Build curl config — disable SSL checks (needed on some corporate networks)
+  cfg <- httr::config(
+    ssl_verifypeer = FALSE,
+    ssl_verifyhost = 0L,
+    connecttimeout = 30L,
+    timeout        = 120L)
+
+  # Auto-detect corporate proxy from standard environment variables
+  proxy_url <- Sys.getenv("HTTPS_PROXY",
+               Sys.getenv("https_proxy",
+               Sys.getenv("HTTP_PROXY",
+               Sys.getenv("http_proxy", ""))))
+  if (nchar(proxy_url) > 0) {
+    cfg <- c(cfg, httr::use_proxy(proxy_url))
+    cat(sprintf("  [using proxy: %s]\n", proxy_url))
+  }
+
+  response <- tryCatch(
+    httr::POST(
+      url    = "https://api.anthropic.com/v1/messages",
+      config = cfg,
+      httr::add_headers(
+        "x-api-key"         = api_key,
+        "anthropic-version" = "2023-06-01",
+        "content-type"      = "application/json"),
+      body   = jsonlite::toJSON(body, auto_unbox = TRUE),
+      encode = "raw"),
+    error = function(e) {
+      msg <- conditionMessage(e)
+      stop(
+        "Cannot reach api.anthropic.com — likely a firewall/proxy issue.\n",
+        "  Error: ", msg, "\n\n",
+        "  To fix:\n",
+        "  1. Ask IT to whitelist api.anthropic.com on port 443, OR\n",
+        "  2. Set your proxy in the .env file, e.g.:\n",
+        "       HTTPS_PROXY=http://your-proxy:8080\n",
+        "  3. Try from a personal hotspot.")
+    })
+
   if (httr::http_error(response)) {
     stop("Claude API error (", httr::status_code(response), "): ",
          httr::content(response, "text", encoding = "UTF-8"))
