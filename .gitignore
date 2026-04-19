@@ -26,8 +26,7 @@ make_zip.ps1
 GovPersona-CLI/r_packages/
 GovPersona-CLI/whl_packages/
 
-# KB JSON over 50 MB GitHub limit
-GovPersona-CLI/kb_central_bank.json
+# (kb_central_bank.json tracked via Git LFS — see .gitattributes)
 
 # Large binary in Shiny
 GovPersona-Shiny/cloudflared.exe
