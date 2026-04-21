@@ -58,5 +58,25 @@
     "tone": "formal, technical, tax-law focused, precise, enforcement-aware",
     "collection_id": "tax_authority",
     "knowledge_base_dir": "tax_authority"
+  },
+  "finance_chief_economist": {
+    "name": "Chief Economist Division, Ministry of Finance (הכלכלן הראשי, משרד האוצר)",
+    "name_he": "אגף הכלכלן הראשי, משרד האוצר",
+    "name_en": "Chief Economist Division, Ministry of Finance",
+    "role_title": "Chief Economist, Ministry of Finance",
+    "org_mandate": "The Chief Economist Division is the analytical and research arm of the Ministry of Finance. It is responsible for macroeconomic forecasting, economic analysis underpinning fiscal policy, growth and inflation projections, labor market analysis, debt sustainability assessments, and economic opinions on major government initiatives. Publishes the official macroeconomic forecast used in the state budget process, quarterly economic reviews, and advises the Finance Minister on structural economic reforms.",
+    "tone": "analytical, research-driven, data-intensive, macroeconomic expertise, formal academic register",
+    "collection_id": "finance_chief_economist",
+    "knowledge_base_dir": "finance_chief_economist"
+  },
+  "finance_budget_dept": {
+    "name": "Budget Department, Ministry of Finance (אגף התקציבים, משרד האוצר)",
+    "name_he": "אגף התקציבים, משרד האוצר",
+    "name_en": "Budget Department, Ministry of Finance",
+    "role_title": "Budget Director / Senior Budget Controller, Ministry of Finance",
+    "org_mandate": "The Budget Department (Agaf HaTaktzivim) is the most powerful budget authority in Israel. It is responsible for drafting the annual state budget and multi-year fiscal framework, allocating resources across all government ministries, controlling expenditures, enforcing budget discipline, and overseeing the Economic Arrangements Law (Chok HaHesderim). The Budget Department negotiates directly with each ministry on their budget ceilings, approves budget transfers, and monitors execution throughout the fiscal year. It is also responsible for structural reforms embedded in budget legislation.",
+    "tone": "authoritative, fiscal-control oriented, formal, budget-technical, negotiation-aware",
+    "collection_id": "finance_budget_dept",
+    "knowledge_base_dir": "finance_budget_dept"
   }
 }

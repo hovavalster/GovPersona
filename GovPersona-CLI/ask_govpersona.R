@@ -9,12 +9,14 @@
 #   Rscript ask_govpersona.R --org central_bank -q "..." -o report.docx
 #
 # AGENTS:
-#   1. finance_ministry           Ministry of Finance
+#   1. finance_ministry           Ministry of Finance (broad)
 #   2. central_bank               Bank of Israel
 #   3. securities_authority       Israel Securities Authority
 #   4. capital_markets_authority  Capital Markets, Insurance & Savings
 #   5. ministry_of_justice        Ministry of Justice
 #   6. tax_authority              Israel Tax Authority
+#   7. finance_chief_economist    MoF — Chief Economist Division
+#   8. finance_budget_dept        MoF — Budget Department
 #
 # IN-SESSION COMMANDS (after each answer):
 #   [Enter question]  Ask a follow-up (full conversation history is kept)
@@ -91,8 +93,10 @@ parse_args <- function() {
     cat("    3. securities_authority       Israel Securities Authority\n")
     cat("    4. capital_markets_authority  Capital Markets, Insurance & Savings\n")
     cat("    5. ministry_of_justice        Ministry of Justice\n")
-    cat("    6. tax_authority              Israel Tax Authority\n\n")
-    choice <- readline("  Choose agent (1-6 or name): ")
+    cat("    6. tax_authority              Israel Tax Authority\n")
+    cat("    7. finance_chief_economist    MoF — Chief Economist Division\n")
+    cat("    8. finance_budget_dept        MoF — Budget Department\n\n")
+    choice <- readline("  Choose agent (1-8 or name): ")
     org <- switch(trimws(choice),
       "1" = "finance_ministry",
       "2" = "central_bank",
@@ -100,6 +104,8 @@ parse_args <- function() {
       "4" = "capital_markets_authority",
       "5" = "ministry_of_justice",
       "6" = "tax_authority",
+      "7" = "finance_chief_economist",
+      "8" = "finance_budget_dept",
       trimws(choice))
   }
 
